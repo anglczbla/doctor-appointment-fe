@@ -55,7 +55,7 @@ const MyProfile = () => {
     if (image) {
       return URL.createObjectURL(image);
     }
-    return userData.image;
+    return userData.image || assets.profile_pic;
   };
 
   return (
@@ -70,7 +70,7 @@ const MyProfile = () => {
                 alt=""
               />
               <img
-                className="w-10 absolute bottom-12 right-12"
+                className="w-10 absolute bottom-3 right-3"
                 src={image ? "" : assets.upload_icon}
                 alt=""
               />
@@ -83,7 +83,7 @@ const MyProfile = () => {
             />
           </label>
         ) : (
-          <img className="w-36 rounded" src={userData.image} alt="" />
+          <img className="w-36 rounded" src={userData.image || assets.profile_pic} alt="" />
         )}
 
         {isEdit ? (
