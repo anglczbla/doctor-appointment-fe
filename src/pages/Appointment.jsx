@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { AppContext } from "../context/AppContext";
+import { toast } from "react-toastify";
 import { assets } from "../assets/assets";
 import RelatedDoctor from "../components/RelatedDoctor";
-import { toast } from "react-toastify";
-import axios from "axios";
+import { AppContext } from "../context/AppContext";
 
 const Appointment = () => {
   const { docId } = useParams();
@@ -116,7 +116,7 @@ const Appointment = () => {
           });
         } else {
           console.log(
-            `Slot ${isSlotAvailable} on ${slotDate} is already booked`
+            `Slot ${isSlotAvailable} on ${slotDate} is already booked`,
           );
         }
 
@@ -130,7 +130,7 @@ const Appointment = () => {
       }
     }
   };
-  
+
   const bookAppointment = async () => {
     if (!token) {
       toast.warn("Login to book appointment");
@@ -147,7 +147,7 @@ const Appointment = () => {
       const { data } = await axios.post(
         backendUrl + "/api/user/book-appointment",
         { docId, slotDate, slotTime, userId: userData._id },
-        { headers: { token } }
+        { headers: { token } },
       );
       if (data.success) {
         toast.success(data.message);
@@ -194,7 +194,7 @@ const Appointment = () => {
           </div>
           <div className="flex-1 border border-gray-400 rounded-lg p-8 py-7 bg-white mx-2 sm:mx-0 mt-[-80px] sm:mt-0">
             {/* --- Doc Info: name,degre,experience --- */}
-            <p className="flex otems-center gap-2 text-2xl font-medium text-gray-900">
+            <p className="flex items-center gap-2 text-2xl font-medium text-gray-900">
               {docInfo.name}{" "}
               <img className="w-5" src={assets.verified_icon} alt="" />
             </p>
@@ -208,7 +208,7 @@ const Appointment = () => {
             </div>
             {/* --- Doctor About --- */}
             <div>
-              <p className="flex items-center gap-1  text-sm font-mediym text-gray-900 mt-3">
+              <p className="flex items-center gap-1 text-sm font-medium text-gray-900 mt-3">
                 About <img src={assets.info_icon} alt="" />
               </p>
               <p className="text-sm text-gray-500 max-w-[700px] mt-1">

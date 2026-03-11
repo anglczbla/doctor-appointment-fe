@@ -13,53 +13,53 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex items-center justify-between text-sm py-4 mb-5 border-b border-b-gray-400">
+    <div className="sticky top-0 z-50 bg-transparent flex items-center justify-between text-sm py-4 mb-5 border-b-0 px-4 sm:px-[0%]">
       <img
         onClick={() => navigate("/")}
-        className="w-44 cursor-pointer"
+        className="w-44 cursor-pointer hover:scale-105 transition-all duration-300 active:opacity-80"
         src={assets.logo}
-        alt=""
+        alt="Prescripto Logo"
       />
-      <ul className="hidden md:flex items-start gap-5 font-medium">
+      <ul className="hidden md:flex items-start gap-6 font-medium">
         <NavLink
           to="/"
           className={({ isActive }) =>
-            `py-1 ${isActive ? "border-b-2 border-blue-500 text-blue-500" : "hover:text-blue-500"}`
+            `py-1 transition-all duration-300 ${isActive ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-700 hover:text-blue-500 hover:scale-110"}`
           }
         >
-          <li>Home</li>
+          <li>HOME</li>
         </NavLink>
         <NavLink
           to="/doctor"
           className={({ isActive }) =>
-            `py-1 ${isActive ? "border-b-2 border-blue-500 text-blue-500" : "hover:text-blue-500"}`
+            `py-1 transition-all duration-300 ${isActive ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-700 hover:text-blue-500 hover:scale-110"}`
           }
         >
-          <li>All Doctor</li>
+          <li>ALL DOCTORS</li>
         </NavLink>
         <NavLink
           to="/generate-ai"
           className={({ isActive }) =>
-            `py-1 ${isActive ? "border-b-2 border-blue-500 text-blue-500" : "hover:text-blue-500"}`
+            `py-1 transition-all duration-300 ${isActive ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-700 hover:text-blue-500 hover:scale-110"}`
           }
         >
-          <li>AI 🤖</li>
+          <li className="flex items-center gap-1">AI SPECIALIST <span className="text-xs">🤖</span></li>
         </NavLink>
         <NavLink
           to="/about"
           className={({ isActive }) =>
-            `py-1 ${isActive ? "border-b-2 border-blue-500 text-blue-500" : "hover:text-blue-500"}`
+            `py-1 transition-all duration-300 ${isActive ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-700 hover:text-blue-500 hover:scale-110"}`
           }
         >
-          <li>About</li>
+          <li>ABOUT</li>
         </NavLink>
         <NavLink
           to="/contact"
           className={({ isActive }) =>
-            `py-1 ${isActive ? "border-b-2 border-blue-500 text-blue-500" : "hover:text-blue-500"}`
+            `py-1 transition-all duration-300 ${isActive ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-700 hover:text-blue-500 hover:scale-110"}`
           }
         >
-          <li>Contact</li>
+          <li>CONTACT</li>
         </NavLink>
       </ul>
       <div className="flex items-center gap-4">

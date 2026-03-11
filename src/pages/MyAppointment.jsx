@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AppContext } from "../context/AppContext";
 
 const MyAppointment = () => {
   const { backendUrl, token, getDoctorsData } = useContext(AppContext);
+  const navigate = useNavigate();
 
   const [appointments, setAppointments] = useState([]);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
@@ -157,24 +158,22 @@ const MyAppointment = () => {
 
   return (
     <div>
-      <p className="pb-3 mt-12 font-medium text-zinc-700">My Appointment</p>
+      <p className="pb-3 mt-12 font-medium text-zinc-700 border-b">My Appointment</p>
       {appointments.length === 0 ? (
-        <p className="pb-3 mt-12 font-medium text-zinc-700">
-          No Appointments{" "}
-          <NavLink
-            to="/doctor"
-            className={({ isActive }) =>
-              `py-1 ${isActive ? "border-b-2 border-blue-500 text-blue-500" : "hover:text-blue-500"}`
-            }
+        <div className="flex flex-col items-center justify-center py-20">
+          <p className="text-gray-400 text-lg mb-4">You have no appointments yet.</p>
+          <button
+            onClick={() => navigate('/doctor')}
+            className="bg-blue-600 text-white px-10 py-3 rounded-full hover:bg-blue-700 transition-all"
           >
-            <li>Book Doctor Now</li>
-          </NavLink>
-        </p>
+            Book Doctor Now
+          </button>
+        </div>
       ) : (
-        <div>
+        <div className="space-y-4 mt-4">
           {appointments.map((item, index) => (
             <div
-              className="grid grid-cols-[1fr_2fr] gap-4 sm:flex sm:gap-6 py-2 border-b"
+              className="grid grid-cols-[1fr_2fr] gap-4 sm:flex sm:gap-6 py-4 border-b last:border-b-0 hover:bg-gray-50 transition-colors p-2 rounded-lg"
               key={index}
             >
               <div>
